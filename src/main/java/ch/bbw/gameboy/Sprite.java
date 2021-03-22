@@ -37,10 +37,10 @@ public class Sprite {
         if (brightness < 50) {
             return 3;
         }
-        if (brightness < 300) {
+        if (brightness < 400) {
             return 2;
         }
-        if (brightness < 400) {
+        if (brightness < 600) {
             return 1;
         }
         return 0;

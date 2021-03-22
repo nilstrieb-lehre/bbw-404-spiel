@@ -22,7 +22,7 @@ public class GameLogic implements ButtonController {
 		starfield = new StarfieldExample(graphic);
 
 		try {
-			mario = new Sprite("ding.png", graphic);
+			mario = new Sprite("img_1.png", graphic);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -39,7 +39,7 @@ public class GameLogic implements ButtonController {
 	public void tick() {
 		graphic.clear();
 		starfield.draw();
-		mario.draw(50, 50);
+		mario.draw(10, 10);
 	}
 
 	@Override
