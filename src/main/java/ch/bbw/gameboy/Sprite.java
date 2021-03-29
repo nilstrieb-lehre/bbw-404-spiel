@@ -49,7 +49,9 @@ public class Sprite {
     public void draw(int x, int y) {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                pixelGraphic.setPixel(x + i, y + j, data[j * width + i]);
+                if (x + i < pixelGraphic.getPixelWidth() && y + j< pixelGraphic.getPixelHeight()) {
+                    pixelGraphic.setPixel(x + i, y + j, data[j * width + i]);
+                }
             }
         }
     }
