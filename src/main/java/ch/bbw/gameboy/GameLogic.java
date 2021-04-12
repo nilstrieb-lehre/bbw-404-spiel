@@ -26,7 +26,7 @@ public class GameLogic implements ButtonController {
 
         player = new Player(new Sprite("img_1.png", graphic));
 
-        objects.add(new Projectile(new Sprite("projectile.png", graphic), 100, 30, 10));
+        objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
 
 	public static void main(String[] args) throws Throwable {
@@ -42,8 +42,17 @@ public class GameLogic implements ButtonController {
 		starfield.draw();
 		player.draw();
 
+
+        var toRemove = new ArrayList<Drawable>();
         for (Drawable object : objects) {
-            object.draw();
+            try {
+                object.draw();
+            } catch (DeleteObjectException e) {
+                toRemove.add(object);
+            }
+        }
+        for (Drawable drawable : toRemove) {
+            objects.remove(drawable);
         }
 	}
 

@@ -2,9 +2,9 @@ package ch.bbw.gameboy;
 
 public class Projectile implements Drawable {
     private final Sprite sprite;
-    private int x;
+    private final int x;
     private int y;
-    private int speed;
+    private final int speed;
 
     public Projectile(Sprite sprite, int x, int y, int speed) {
         this.sprite = sprite;
@@ -14,8 +14,12 @@ public class Projectile implements Drawable {
     }
 
     @Override
-    public void draw() {
+    public void draw() throws DeleteObjectException {
         y -= speed;
+        if (y <= 0) {
+            throw new DeleteObjectException();
+        }
         sprite.draw(x, y);
+
     }
 }
