@@ -5,6 +5,8 @@ import ch.bbw.gameboy.api.PixelGraphic;
 import ch.bbw.gameboy.impl.GameBbwoy;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Anchor point for the graphic {@link #tick()} and the user-interaction {@link #onButtonPress(GameButton)}.
@@ -16,12 +18,15 @@ public class GameLogic implements ButtonController {
 	private final StarfieldExample starfield;
 
 	private Player player;
+    private List<Drawable> objects = new ArrayList<>();
 
 	public GameLogic(PixelGraphic graphic) {
 		this.graphic = graphic;
 		starfield = new StarfieldExample(graphic);
 
         player = new Player(new Sprite("img_1.png", graphic));
+
+        objects.add(new Projectile(new Sprite("projectile.png", graphic), 100, 30, 10));
     }
 
 	public static void main(String[] args) throws Throwable {
@@ -36,6 +41,10 @@ public class GameLogic implements ButtonController {
 		graphic.clear();
 		starfield.draw();
 		player.draw();
+
+        for (Drawable object : objects) {
+            object.draw();
+        }
 	}
 
 	@Override
