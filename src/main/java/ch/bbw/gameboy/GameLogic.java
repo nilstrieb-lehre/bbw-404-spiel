@@ -24,11 +24,11 @@ public class GameLogic implements ButtonController {
         starfield = new StarfieldExample(graphic);
 
         player = new Player(new Sprite("img_1.png", graphic));
-        //objects.add(new Enemy(new Sprite("sprites\\enemy1.jpg", graphic), 30, 30, 0));
-        //objects.add(new Enemy(new Sprite("sprites\\enemy2.jpg", graphic), 70, 30, 0));
-        //objects.add(new Enemy(new Sprite("sprites\\enemy3.jpg", graphic), 120, 30, 0));
-        //objects.add(new Enemy(new Sprite("sprites\\enemy4.jpg", graphic), 80, 30, 0));
-        objects.add(new Enemy(new Sprite("sprites\\Endboss.jpg", graphic), 80, 40, 0));
+        objects.add(new Enemy(new Sprite("sprites\\enemy1.jpg", graphic), 30, 5, 0));
+        objects.add(new Enemy(new Sprite("sprites\\enemy2.jpg", graphic), 70, 5, 0));
+        objects.add(new Enemy(new Sprite("sprites\\enemy3.jpg", graphic), 120, 5, 0));
+        objects.add(new Enemy(new Sprite("sprites\\enemy4.jpg", graphic), 80, 5, 0));
+        objects.add(new Enemy(new Sprite("sprites\\Endboss.jpg", graphic), 80, 10, 0));
         objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
 
