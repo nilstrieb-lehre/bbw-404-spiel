@@ -28,7 +28,7 @@ public class GameLogic implements ButtonController {
         //objects.add(new Enemy(new Sprite("sprites\\enemy2.jpg", graphic), 70, 30, 0));
         //objects.add(new Enemy(new Sprite("sprites\\enemy3.jpg", graphic), 120, 30, 0));
         //objects.add(new Enemy(new Sprite("sprites\\enemy4.jpg", graphic), 80, 30, 0));
-        objects.add(new Enemy(new Sprite("sprites\\Endboss.jpg", graphic), 80, 40, 0));
+        //objects.add(new Enemy(new Sprite("sprites\\Endboss.png", graphic), 80, 40, 0));
         objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
 
