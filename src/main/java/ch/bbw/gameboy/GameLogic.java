@@ -15,18 +15,14 @@ public class GameLogic implements ButtonController {
 
 	private final StarfieldExample starfield;
 
-	private Sprite mario;
+	private Player player;
 
 	public GameLogic(PixelGraphic graphic) {
 		this.graphic = graphic;
 		starfield = new StarfieldExample(graphic);
 
-		try {
-			mario = new Sprite("img_1.png", graphic);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        player = new Player(new Sprite("img_1.png", graphic));
+    }
 
 	public static void main(String[] args) throws Throwable {
 		GameBbwoy.main(args); // just here for a convenient button
@@ -39,7 +35,7 @@ public class GameLogic implements ButtonController {
 	public void tick() {
 		graphic.clear();
 		starfield.draw();
-		mario.draw(10, 10);
+		player.draw();
 	}
 
 	@Override
