@@ -16,12 +16,14 @@ public class GameLogic implements ButtonController {
 	private final StarfieldExample starfield;
 
 	private Player player;
+	private Enemy enemy;
 
 	public GameLogic(PixelGraphic graphic) {
 		this.graphic = graphic;
 		starfield = new StarfieldExample(graphic);
 
         player = new Player(new Sprite("img_1.png", graphic));
+        enemy = new Enemy(new Sprite("", graphic));
     }
 
 	public static void main(String[] args) throws Throwable {
@@ -36,6 +38,7 @@ public class GameLogic implements ButtonController {
 		graphic.clear();
 		starfield.draw();
 		player.draw();
+		enemy.draw();
 	}
 
 	@Override
