@@ -25,7 +25,7 @@ public class GameLogic implements ButtonController {
         this.graphic = graphic;
         starfield = new StarfieldExample(graphic);
 
-        player = new Player(new Sprite("img_1.png", graphic));
+        player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic));
         sprites.add(new Sprite("sprites\\enemy1.jpg", graphic));
         sprites.add(new Sprite("sprites\\enemy2.jpg", graphic));
         sprites.add(new Sprite("sprites\\enemy3.jpg", graphic));

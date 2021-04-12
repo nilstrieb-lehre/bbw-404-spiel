@@ -6,7 +6,7 @@ public class Player implements Drawable {
 
     private final Sprite sprite;
     private int posX = 10;
-    private final int posY = 40;
+    private final int posY = 70;
 
     public Player(Sprite sprite) {
         this.sprite = sprite;
@@ -19,7 +19,7 @@ public class Player implements Drawable {
 
     public void moving(ButtonController.GameButton button) {
 
-        if (posX > 9 && posX <= 160 - sprite.getWidth()) {
+        if (posX > 9 && posX <= 155 - sprite.getWidth()) {
             if (button == ButtonController.GameButton.LEFT) {
                 posX -= 10;
             } else if (button == ButtonController.GameButton.RIGHT) {
@@ -28,8 +28,8 @@ public class Player implements Drawable {
 
         } else if (posX < 9) {
             posX = 10;
-        } else if (posX > 160 - sprite.getWidth()) {
-            posX = 160 - sprite.getWidth();
+        } else if (posX > 155 - sprite.getWidth()) {
+            posX = 155 - sprite.getWidth();
         }
         sprite.draw(posX, posY);
     }
