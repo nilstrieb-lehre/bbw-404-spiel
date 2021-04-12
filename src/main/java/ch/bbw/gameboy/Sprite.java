@@ -16,10 +16,15 @@ public class Sprite {
     private final int width;
     private final int height;
 
-    public Sprite(String path, PixelGraphic pixelGraphic) throws IOException {
+    public Sprite(String path, PixelGraphic pixelGraphic) {
         this.pixelGraphic = pixelGraphic;
 
-        BufferedImage image = ImageIO.read(new File(path));
+        BufferedImage image;
+        try {
+            image = ImageIO.read(new File(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         data = new int[image.getWidth() * image.getHeight()];
         for (int i = 0; i < image.getHeight(); i++) {
             for (int j = 0; j < image.getWidth(); j++) {
