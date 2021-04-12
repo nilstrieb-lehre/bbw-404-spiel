@@ -21,6 +21,9 @@ public class Enemy implements Drawable {
 
         if (y >= 144) {
             throw new DeleteObjectException();
+            /**
+             *game Over
+             */
         }
     }
 }

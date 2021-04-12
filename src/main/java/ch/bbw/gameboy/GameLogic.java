@@ -30,6 +30,7 @@ public class GameLogic implements ButtonController {
         sprites.add(new Sprite("sprites\\enemy2.jpg", graphic));
         sprites.add(new Sprite("sprites\\enemy3.jpg", graphic));
         sprites.add(new Sprite("sprites\\enemy4.jpg", graphic));
+        sprites.add(new Sprite("sprites\\Endboss.png", graphic));
         objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
 
@@ -45,8 +46,12 @@ public class GameLogic implements ButtonController {
     public void tick() {
 
         if (Math.random() > 0.98) {
-            objects.add(new Enemy(sprites.get(new Random().nextInt(3)+1), new Random().nextInt(100)+30, 30, -1));
+            objects.add(new Enemy(sprites.get(new Random().nextInt(3)+1), new Random().nextInt(100)+15, 5, -1));
         }
+
+        /**
+         * Noch den Endboss hinzufügen
+         */
 
         graphic.clear();
         starfield.draw();
