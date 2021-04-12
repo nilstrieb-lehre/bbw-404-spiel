@@ -61,11 +61,10 @@ public class GameLogic implements ButtonController {
 
     @Override
     public void onButtonPress(GameButton button) {
-        System.out.println("down: " + button);
+        player.moving(button);
     }
 
     @Override
     public void onButtonRelease(GameButton button) {
-        System.out.println("up: " + button);
     }
 }
