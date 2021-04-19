@@ -24,4 +24,24 @@ public class Enemy implements Drawable {
             // game over
         }
     }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public int getHeight() {
+        return sprite.getHeight();
+    }
+
+    @Override
+    public int getWidth() {
+        return sprite.getWidth();
+    }
 }

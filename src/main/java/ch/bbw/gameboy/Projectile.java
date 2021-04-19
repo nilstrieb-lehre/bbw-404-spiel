@@ -23,4 +23,24 @@ public class Projectile implements Drawable {
         sprite.draw(x, y);
 
     }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public int getHeight() {
+        return sprite.getHeight();
+    }
+
+    @Override
+    public int getWidth() {
+        return sprite.getWidth();
+    }
 }

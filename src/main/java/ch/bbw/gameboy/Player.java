@@ -17,6 +17,26 @@ public class Player implements Drawable {
         sprite.draw(posX, posY);
     }
 
+    @Override
+    public int getX() {
+        return posX;
+    }
+
+    @Override
+    public int getY() {
+        return posY;
+    }
+
+    @Override
+    public int getHeight() {
+        return sprite.getHeight();
+    }
+
+    @Override
+    public int getWidth() {
+        return sprite.getWidth();
+    }
+
     public void moving(ButtonController.GameButton button) {
 
         if (posX > 9 && posX <= 155 - sprite.getWidth()) {
