@@ -1,5 +1,9 @@
 package ch.bbw.gameboy;
 
+import ch.bbw.gameboy.impl.GameBbwoy;
+
+import javax.swing.*;
+
 public class Enemy implements Drawable {
 
     private final Sprite sprite;
@@ -19,9 +23,11 @@ public class Enemy implements Drawable {
         y -= speed;
         sprite.draw(x, y);
 
-        if (y >= 144) {
-            logic.remove(this);
-            // game over
+        if (x - sprite.getHeight() < 0) {
+            //game over, Count at null
+            logic.reset();
+            logic.setRunning(false);
+            JOptionPane.showMessageDialog(null, "Game over! Better Luck next Time");
         }
     }
 

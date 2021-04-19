@@ -19,6 +19,8 @@ public class GameLogic implements ButtonController {
 
     private final StarfieldExample starfield;
 
+    private boolean isRunning = true;
+
     private Player player;
     private List<Drawable> objects = new ArrayList<>();
     private List<Sprite> enemySprites = new ArrayList<>();
@@ -35,7 +37,6 @@ public class GameLogic implements ButtonController {
         enemySprites.add(new Sprite("sprites\\enemy3.png", graphic));
         enemySprites.add(new Sprite("sprites\\enemy4.png", graphic));
         enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
-        objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
 
     public static void main(String[] args) throws Throwable {
@@ -48,6 +49,10 @@ public class GameLogic implements ButtonController {
      * @see GameBbwoy#FPS
      */
     public void tick() {
+
+        if (!isRunning) {
+            return;
+        }
 
         if (Math.random() > 0.98) {
             if (Math.random() > 0.95) {
@@ -80,6 +85,11 @@ public class GameLogic implements ButtonController {
         objects.add(object);
     }
 
+    public void reset() {
+        player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic));
+        objects.clear();
+    }
+
     @Override
     public void onButtonPress(GameButton button) {
         player.moving(button, graphic.getPixelWidth());
@@ -92,5 +102,13 @@ public class GameLogic implements ButtonController {
             objects.add(new Projectile(new Sprite("projectile.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
             objects.get(objects.size() - 1).draw(this);
         }
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
     }
 }
