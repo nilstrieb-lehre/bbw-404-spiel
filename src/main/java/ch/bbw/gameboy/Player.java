@@ -40,20 +40,14 @@ public class Player implements Drawable {
     }
 
     public void moving(ButtonController.GameButton button, double graphicX) {
-
-        double newPosX = posX + sprite.getWidth();
-        if (posX > 0 && newPosX <= graphicX) {
-            if (button == ButtonController.GameButton.LEFT) {
-                posX -= speed;
-            } else if (button == ButtonController.GameButton.RIGHT) {
-                posX += speed;
-            }
-
-        } else if (posX <= 0) {
-            posX += speed;
-        } else if (newPosX > graphicX) {
-            posX = (int) graphicX - speed;
+        if (button == ButtonController.GameButton.LEFT) {
+            if (posX > 0) posX -= speed;
+            else posX = speed;
+        } else if (button == ButtonController.GameButton.RIGHT) {
+            if (posX + sprite.getWidth() < graphicX) posX += speed;
+            else posX -= speed;
         }
+
         sprite.draw(posX, posY);
     }
 }
