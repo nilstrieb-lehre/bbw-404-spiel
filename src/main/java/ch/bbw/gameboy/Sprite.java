@@ -39,6 +39,11 @@ public class Sprite {
 
     private int mapColor(Color c) {
         int brightness = c.getBlue() + c.getGreen() + c.getRed();
+        System.out.println(c.getAlpha());
+        if (c.getAlpha() < 100) {
+            System.out.println("transparent");
+            return 5;
+        }
         if (brightness < 50) {
             return 3;
         }
@@ -55,7 +60,11 @@ public class Sprite {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (x + i < pixelGraphic.getPixelWidth() && y + j< pixelGraphic.getPixelHeight()) {
-                    pixelGraphic.setPixel(x + i, y + j, data[j * width + i]);
+                    int color = data[j * width + i];
+                    if (color == 5) {
+                        continue;
+                    }
+                    pixelGraphic.setPixel(x + i, y + j, color);
                 }
             }
         }

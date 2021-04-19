@@ -30,10 +30,10 @@ public class GameLogic implements ButtonController {
         starfield = new StarfieldExample(graphic);
 
         player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic));
-        enemySprites.add(new Sprite("sprites\\enemy1.jpg", graphic));
-        enemySprites.add(new Sprite("sprites\\enemy2.jpg", graphic));
-        enemySprites.add(new Sprite("sprites\\enemy3.jpg", graphic));
-        enemySprites.add(new Sprite("sprites\\enemy4.jpg", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy1.png", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy2.png", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy3.png", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy4.png", graphic));
         enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
         objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
