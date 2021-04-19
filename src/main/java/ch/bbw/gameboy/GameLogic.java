@@ -61,8 +61,8 @@ public class GameLogic implements ButtonController {
 
         toRemove.clear();
 
-        for (Drawable object : objects) {
-            object.draw(this);
+        for (int i = 0; i < objects.size(); i++) {
+            objects.get(i).draw(this);
         }
 
         objects.removeAll(toRemove);
@@ -70,6 +70,10 @@ public class GameLogic implements ButtonController {
 
     public void remove(Drawable drawable) {
         toRemove.add(drawable);
+    }
+
+    public void add(Drawable drawable) {
+        objects.add(drawable);
     }
 
     @Override
