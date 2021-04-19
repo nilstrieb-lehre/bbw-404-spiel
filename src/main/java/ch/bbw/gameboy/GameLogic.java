@@ -82,15 +82,15 @@ public class GameLogic implements ButtonController {
 
     @Override
     public void onButtonPress(GameButton button) {
-        player.moving(button);
-        if (button == GameButton.UP) {
-            objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
-            objects.get(objects.size() - 1).draw(this);
-        }
+        player.moving(button, graphic.getPixelWidth());
+
     }
 
     @Override
     public void onButtonRelease(GameButton button) {
-        System.out.println("up: " + button);
+        if (button == GameButton.UP || button == GameButton.SPACE) {
+            objects.add(new Projectile(new Sprite("projectile.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
+            objects.get(objects.size() - 1).draw(this);
+        }
     }
 }
