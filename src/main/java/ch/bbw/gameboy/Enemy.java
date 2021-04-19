@@ -15,15 +15,13 @@ public class Enemy implements Drawable {
     }
 
     @Override
-    public void draw(GameLogic logic) throws DeleteObjectException {
+    public void draw(GameLogic logic) {
         y -= speed;
         sprite.draw(x, y);
 
         if (y >= 144) {
-            throw new DeleteObjectException();
-            /**
-             *game Over
-             */
+            logic.remove(this);
+            // game over
         }
     }
 }

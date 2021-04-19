@@ -23,6 +23,8 @@ public class GameLogic implements ButtonController {
     private List<Drawable> objects = new ArrayList<>();
     private List<Sprite> enemySprites = new ArrayList<>();
 
+    private List<Drawable> toRemove = new ArrayList<>();
+
     public GameLogic(PixelGraphic graphic) {
         this.graphic = graphic;
         starfield = new StarfieldExample(graphic);
@@ -57,17 +59,17 @@ public class GameLogic implements ButtonController {
         starfield.draw();
         player.draw(this);
 
-        var toRemove = new ArrayList<Drawable>();
+        toRemove.clear();
+
         for (Drawable object : objects) {
-            try {
-                object.draw(this);
-            } catch (DeleteObjectException e) {
-                toRemove.add(object);
-            }
+            object.draw(this);
         }
-        for (Drawable drawable : toRemove) {
-            objects.remove(drawable);
-        }
+
+        objects.removeAll(toRemove);
+    }
+
+    public void remove(Drawable drawable) {
+        toRemove.add(drawable);
     }
 
     @Override

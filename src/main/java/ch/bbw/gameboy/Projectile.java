@@ -14,10 +14,11 @@ public class Projectile implements Drawable {
     }
 
     @Override
-    public void draw(GameLogic logic) throws DeleteObjectException {
+    public void draw(GameLogic logic) {
         y -= speed;
         if (y <= 0) {
-            throw new DeleteObjectException();
+            logic.remove(this);
+            return;
         }
         sprite.draw(x, y);
 
