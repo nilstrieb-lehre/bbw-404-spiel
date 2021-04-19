@@ -13,24 +13,26 @@ import java.util.Random;
  */
 public class GameLogic implements ButtonController {
 
+    private static Random random = new Random();
+
     private final PixelGraphic graphic;
 
     private final StarfieldExample starfield;
 
     private Player player;
     private List<Drawable> objects = new ArrayList<>();
-    private List<Sprite> sprites = new ArrayList<>();
+    private List<Sprite> enemySprites = new ArrayList<>();
 
     public GameLogic(PixelGraphic graphic) {
         this.graphic = graphic;
         starfield = new StarfieldExample(graphic);
 
         player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic));
-        sprites.add(new Sprite("sprites\\enemy1.jpg", graphic));
-        sprites.add(new Sprite("sprites\\enemy2.jpg", graphic));
-        sprites.add(new Sprite("sprites\\enemy3.jpg", graphic));
-        sprites.add(new Sprite("sprites\\enemy4.jpg", graphic));
-        sprites.add(new Sprite("sprites\\Endboss.png", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy1.jpg", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy2.jpg", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy3.jpg", graphic));
+        enemySprites.add(new Sprite("sprites\\enemy4.jpg", graphic));
+        enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
         objects.add(new Projectile(new Sprite("projectile.png", graphic), 30, 100, 1));
     }
 
@@ -46,21 +48,19 @@ public class GameLogic implements ButtonController {
     public void tick() {
 
         if (Math.random() > 0.98) {
-            objects.add(new Enemy(sprites.get(new Random().nextInt(3)+1), new Random().nextInt(100)+15, 5, -1));
+            objects.add(new Enemy(enemySprites.get(random.nextInt(3) + 1), random.nextInt(100) + 15, 5, -1));
         }
 
-        /**
-         * Noch den Endboss hinzufügen
-         */
+        // Noch den Endboss hinzufügen
 
         graphic.clear();
         starfield.draw();
-        player.draw();
+        player.draw(this);
 
         var toRemove = new ArrayList<Drawable>();
         for (Drawable object : objects) {
             try {
-                object.draw();
+                object.draw(this);
             } catch (DeleteObjectException e) {
                 toRemove.add(object);
             }

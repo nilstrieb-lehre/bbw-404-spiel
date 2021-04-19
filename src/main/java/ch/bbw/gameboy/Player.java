@@ -13,7 +13,7 @@ public class Player implements Drawable {
     }
 
     @Override
-    public void draw() {
+    public void draw(GameLogic logic) {
         sprite.draw(posX, posY);
     }
 

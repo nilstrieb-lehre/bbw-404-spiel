@@ -14,7 +14,7 @@ public class Projectile implements Drawable {
     }
 
     @Override
-    public void draw() throws DeleteObjectException {
+    public void draw(GameLogic logic) throws DeleteObjectException {
         y -= speed;
         if (y <= 0) {
             throw new DeleteObjectException();

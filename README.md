@@ -14,6 +14,7 @@
 - Es gibt Unit-Tests, welche einzelne Grafikobjekte testen
 
 ## Es ist ein Spiel
+
 - ein Logo zu Beginn
 - es gibt User-Interaktion via Keyboard
 - es werden User-Acceptance-Tests ausgeführt

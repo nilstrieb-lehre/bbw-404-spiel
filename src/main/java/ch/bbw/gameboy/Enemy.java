@@ -15,7 +15,7 @@ public class Enemy implements Drawable {
     }
 
     @Override
-    public void draw() throws DeleteObjectException {
+    public void draw(GameLogic logic) throws DeleteObjectException {
         y -= speed;
         sprite.draw(x, y);
 
