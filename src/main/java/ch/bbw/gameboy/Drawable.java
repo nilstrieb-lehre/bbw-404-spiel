@@ -1,5 +1,5 @@
 package ch.bbw.gameboy;
 
 public interface Drawable {
-    void draw(GameLogic logic) throws DeleteObjectException;
+    void draw(GameLogic logic);
 }
