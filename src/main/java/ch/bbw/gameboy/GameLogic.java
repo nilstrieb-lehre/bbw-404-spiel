@@ -50,7 +50,11 @@ public class GameLogic implements ButtonController {
     public void tick() {
 
         if (Math.random() > 0.98) {
-            objects.add(new Enemy(enemySprites.get(random.nextInt(4)), random.nextInt(100) + 15, 5, -1));
+            if (Math.random() > 0.95) {
+                objects.add(new Enemy(enemySprites.get(4), 100, 5, -1));
+            } else {
+                objects.add(new Enemy(enemySprites.get(random.nextInt(4)), random.nextInt(100) + 15, 5, -1));
+            }
         }
 
         // Noch den Endboss hinzufügen
