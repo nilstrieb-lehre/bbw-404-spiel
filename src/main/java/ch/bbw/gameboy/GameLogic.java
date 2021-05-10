@@ -35,7 +35,7 @@ public class GameLogic implements ButtonController {
         this.graphic = graphic;
         starfield = new StarfieldExample(graphic);
 
-        player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic));
+        player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic), graphic.getPixelWidth());
         enemySprites.add(new Sprite("sprites\\enemy1.png", graphic));
         enemySprites.add(new Sprite("sprites\\enemy2.png", graphic));
         enemySprites.add(new Sprite("sprites\\enemy3.png", graphic));
@@ -97,7 +97,7 @@ public class GameLogic implements ButtonController {
     }
 
     public void reset() {
-        player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic));
+        player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic), graphic.getPixelWidth());
         objects.clear();
     }
 
@@ -109,6 +109,7 @@ public class GameLogic implements ButtonController {
 
     @Override
     public void onButtonRelease(GameButton button) {
+        player.stopMoving(button, graphic.getPixelWidth());
         if (button == GameButton.UP || button == GameButton.SPACE) {
             objects.add(new Projectile(new Sprite("projectile.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
             objects.get(objects.size() - 1).draw(this);

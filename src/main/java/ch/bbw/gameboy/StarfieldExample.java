@@ -18,7 +18,7 @@ public class StarfieldExample {
 
 	public StarfieldExample(PixelGraphic graphic) {
 		this.graphic = graphic;
-		stars = Stream.generate(Star::new).limit(100).collect(Collectors.toList());
+		stars = Stream.generate(Star::new).limit(1000).collect(Collectors.toList());
 	}
 
 	public void draw() {
@@ -46,7 +46,7 @@ public class StarfieldExample {
 				x = 0;
 				y = 0;
 			}
-			var color = Math.min((Math.abs(x) + Math.abs(y)) / (halfWidth + halfHeight) * 4 + 0.5, 3);
+			var color = Math.min((Math.abs(x) + Math.abs(y)) / (halfWidth + halfHeight) * 4 + 1, 3);
 			graphic.setPixel((int) x + halfWidth, (int) y + halfHeight, (int) color);
 		}
 	}
