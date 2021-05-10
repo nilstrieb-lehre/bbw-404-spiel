@@ -29,7 +29,7 @@ public class Sprite {
         for (int i = 0; i < image.getHeight(); i++) {
             for (int j = 0; j < image.getWidth(); j++) {
                 int color = image.getRGB(j, i);
-                data[i * image.getWidth() + j] = mapColor(Color.decode(String.valueOf(color)));
+                data[i * image.getWidth() + j] = mapColor(new Color(color, true));
             }
         }
 
@@ -39,9 +39,7 @@ public class Sprite {
 
     private int mapColor(Color c) {
         int brightness = c.getBlue() + c.getGreen() + c.getRed();
-        System.out.println(c.getAlpha());
-        if (c.getAlpha() < 100) {
-            System.out.println("transparent");
+        if (c.getAlpha() < 200) {
             return 5;
         }
         if (brightness < 50) {
