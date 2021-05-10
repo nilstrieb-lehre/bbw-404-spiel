@@ -20,16 +20,12 @@ public class GameLogic implements ButtonController {
     private final StarfieldExample starfield;
 
     private boolean isRunning = true;
-    private boolean init = false;
-
-    private final Drawable splashScreen;
 
     private Player player;
     private List<Drawable> objects = new ArrayList<>();
     private List<Sprite> enemySprites = new ArrayList<>();
 
     private List<Drawable> toRemove = new ArrayList<>();
-
 
     public GameLogic(PixelGraphic graphic) {
         this.graphic = graphic;
@@ -41,8 +37,6 @@ public class GameLogic implements ButtonController {
         enemySprites.add(new Sprite("sprites\\enemy3.png", graphic));
         enemySprites.add(new Sprite("sprites\\enemy4.png", graphic));
         enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
-
-        splashScreen = new SplashScreen(new Sprite("sprites\\logo.png", graphic), 5, 5);
     }
 
     public static void main(String[] args) throws Throwable {
@@ -60,12 +54,6 @@ public class GameLogic implements ButtonController {
             return;
         }
 
-        graphic.clear();
-        if (!init) {
-            splashScreen.draw(this);
-            return;
-        }
-
         if (Math.random() > 0.98) {
             if (Math.random() > 0.95) {
                 objects.add(new Enemy(enemySprites.get(4), 100, 5, -1));
@@ -76,6 +64,7 @@ public class GameLogic implements ButtonController {
 
         // Noch den Endboss hinzufügen
 
+        graphic.clear();
         starfield.draw();
         player.draw(this);
 
@@ -104,13 +93,13 @@ public class GameLogic implements ButtonController {
     @Override
     public void onButtonPress(GameButton button) {
         player.moving(button, graphic.getPixelWidth());
-        init = true;
+
     }
 
     @Override
     public void onButtonRelease(GameButton button) {
         if (button == GameButton.UP || button == GameButton.SPACE) {
-            objects.add(new Projectile(new Sprite("projectile.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
+            objects.add(new Projectile(new Sprite("schnürsenkel.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
             objects.get(objects.size() - 1).draw(this);
         }
     }
