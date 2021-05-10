@@ -100,7 +100,7 @@ public class GameLogic implements ButtonController {
     public void onButtonRelease(GameButton button) {
         player.stopMoving(button, graphic.getPixelWidth());
         if (button == GameButton.UP || button == GameButton.SPACE) {
-            objects.add(new Projectile(new Sprite("schnürsenkel.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
+            objects.add(new Projectile(new Sprite("schnuersenkel.png", graphic), player.getX() + player.getWidth() / 2, 100, 1));
             objects.get(objects.size() - 1).draw(this);
         }
     }
