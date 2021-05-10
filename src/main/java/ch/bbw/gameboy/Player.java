@@ -7,16 +7,27 @@ public class Player implements Drawable {
     private final Sprite sprite;
     private int posX = 10;
     private final int posY = 90;
-    private int speed;
+    private static final int speed = 2;
 
-    public Player(Sprite sprite) {
+    private int velocity = 0;
+    private double graphicX;
+
+    public Player(Sprite sprite, double graphicX) {
         this.sprite = sprite;
-        speed = 5;
+        this.graphicX = graphicX;
     }
 
     @Override
     public void draw(GameLogic logic) {
         sprite.draw(posX, posY);
+
+        if (velocity < 0) {
+            if (posX > 0) posX += velocity;
+            else posX = speed;
+        } else if (velocity > 0) {
+            if (posX + sprite.getWidth() < graphicX) posX += velocity;
+            else posX -= speed;
+        }
     }
 
     @Override
@@ -40,12 +51,21 @@ public class Player implements Drawable {
     }
 
     public void moving(ButtonController.GameButton button, double graphicX) {
+
         if (button == ButtonController.GameButton.LEFT) {
-            if (posX > 0) posX -= speed;
-            else posX = speed;
+            velocity = -speed;
         } else if (button == ButtonController.GameButton.RIGHT) {
-            if (posX + sprite.getWidth() < graphicX) posX += speed;
-            else posX -= speed;
+            velocity = speed;
+        }
+
+        sprite.draw(posX, posY);
+    }
+
+    public void stopMoving(ButtonController.GameButton button, int pixelWidth) {
+        if (button == ButtonController.GameButton.LEFT) {
+            velocity = 0;
+        } else if (button == ButtonController.GameButton.RIGHT) {
+            velocity = 0;
         }
 
         sprite.draw(posX, posY);
