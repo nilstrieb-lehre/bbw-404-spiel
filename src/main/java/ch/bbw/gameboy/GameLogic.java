@@ -20,6 +20,7 @@ public class GameLogic implements ButtonController {
     private final StarfieldExample starfield;
 
     private boolean isRunning = true;
+    private boolean init = false;
 
     private final Drawable splashScreen;
 
@@ -59,6 +60,12 @@ public class GameLogic implements ButtonController {
             return;
         }
 
+        graphic.clear();
+        if (!init) {
+            splashScreen.draw(this);
+            return;
+        }
+
         if (Math.random() > 0.98) {
             if (Math.random() > 0.95) {
                 objects.add(new Enemy(enemySprites.get(4), 100, 5, -1));
@@ -69,9 +76,6 @@ public class GameLogic implements ButtonController {
 
         // Noch den Endboss hinzufügen
 
-
-        graphic.clear();
-        splashScreen.draw(this);
         starfield.draw();
         player.draw(this);
 
@@ -100,6 +104,7 @@ public class GameLogic implements ButtonController {
     @Override
     public void onButtonPress(GameButton button) {
         player.moving(button, graphic.getPixelWidth());
+        init = true;
     }
 
     @Override
