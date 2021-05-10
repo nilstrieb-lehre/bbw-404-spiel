@@ -30,6 +30,18 @@ public class Enemy implements Drawable {
             JOptionPane.showMessageDialog(null, "Game over! Better Luck next Time");
             logic.setRunning(true);
         }
+
+        for (Drawable d : logic.getObjects()) {
+            if (d instanceof Projectile) {
+                if (this.x + this.getHeight() > d.getX() &&
+                        this.x < d.getX() + d.getWidth() &&
+                        this.y + this.getHeight() > d.getY() &&
+                        this.y < d.getY() + d.getHeight()) {
+                    logic.remove(d);
+                    logic.remove(this);
+                }
+            }
+        }
     }
 
     @Override

@@ -117,4 +117,8 @@ public class GameLogic implements ButtonController {
     public void setRunning(boolean running) {
         isRunning = running;
     }
+
+    public List<Drawable> getObjects() {
+        return objects;
+    }
 }
