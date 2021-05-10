@@ -23,7 +23,7 @@ public class Enemy implements Drawable {
         y -= speed;
         sprite.draw(x, y);
 
-        if (x - sprite.getHeight() < 0) {
+        if (y + sprite.getHeight() > GameBbwoy.DISPLAY_HEIGHT) {
             //game over, Count at null
             logic.reset();
             logic.setRunning(false);
