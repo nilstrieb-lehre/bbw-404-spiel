@@ -21,11 +21,14 @@ public class GameLogic implements ButtonController {
 
     private boolean isRunning = true;
 
+    private final Drawable splashScreen;
+
     private Player player;
     private List<Drawable> objects = new ArrayList<>();
     private List<Sprite> enemySprites = new ArrayList<>();
 
     private List<Drawable> toRemove = new ArrayList<>();
+
 
     public GameLogic(PixelGraphic graphic) {
         this.graphic = graphic;
@@ -37,6 +40,8 @@ public class GameLogic implements ButtonController {
         enemySprites.add(new Sprite("sprites\\enemy3.png", graphic));
         enemySprites.add(new Sprite("sprites\\enemy4.png", graphic));
         enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
+
+        splashScreen = new SplashScreen(new Sprite("sprites\\logo.png", graphic), 5, 5);
     }
 
     public static void main(String[] args) throws Throwable {
@@ -64,7 +69,9 @@ public class GameLogic implements ButtonController {
 
         // Noch den Endboss hinzufügen
 
+
         graphic.clear();
+        splashScreen.draw(this);
         starfield.draw();
         player.draw(this);
 
@@ -93,7 +100,6 @@ public class GameLogic implements ButtonController {
     @Override
     public void onButtonPress(GameButton button) {
         player.moving(button, graphic.getPixelWidth());
-
     }
 
     @Override
