@@ -28,6 +28,7 @@ public class Enemy implements Drawable {
             logic.reset();
             logic.setRunning(false);
             JOptionPane.showMessageDialog(null, "Game over! Better Luck next Time");
+            logic.setRunning(true);
         }
 
         for (Drawable d : logic.getObjects()) {
