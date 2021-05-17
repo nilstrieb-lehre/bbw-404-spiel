@@ -27,6 +27,7 @@ public class Enemy implements Drawable {
         if (y + sprite.getHeight() > GameBbwoy.DISPLAY_HEIGHT) {
             logic.reset();
             logic.setRunning(false);
+            // non-blocking, so that the executor can just exit the method and run it again after the fixed delay
             CompletableFuture.runAsync(() -> {
                 JOptionPane.showMessageDialog(null, "Game over! Better Luck next Time");
                 logic.setRunning(true);
