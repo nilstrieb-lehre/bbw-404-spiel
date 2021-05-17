@@ -40,6 +40,7 @@ public class Enemy implements Drawable {
                         this.y < d.getY() + d.getHeight()) {
                     logic.remove(d);
                     logic.remove(this);
+                    logic.addScore();
                 }
             }
         }

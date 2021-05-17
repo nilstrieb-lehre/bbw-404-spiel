@@ -28,8 +28,10 @@ public class GameLogic implements ButtonController {
     private Player player;
     private List<Drawable> objects = new ArrayList<>();
     private List<Sprite> enemySprites = new ArrayList<>();
-
     private List<Drawable> toRemove = new ArrayList<>();
+
+    private Score score;
+    private int points;
 
 
     public GameLogic(PixelGraphic graphic) {
@@ -42,6 +44,8 @@ public class GameLogic implements ButtonController {
         enemySprites.add(new Sprite("sprites\\enemy3.png", graphic));
         enemySprites.add(new Sprite("sprites\\enemy4.png", graphic));
         enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
+
+        score = new Score(graphic);
 
         splashScreen = new SplashScreen(new Sprite("sprites\\logo.png", graphic), 5, 5);
     }
@@ -89,6 +93,8 @@ public class GameLogic implements ButtonController {
         }
 
         objects.removeAll(toRemove);
+
+        score.draw(points);
     }
 
     public void remove(Drawable drawable) {
@@ -102,6 +108,7 @@ public class GameLogic implements ButtonController {
     public void reset() {
         player = new Player(new Sprite("sprites\\sportlehrer2.png", graphic), graphic.getPixelWidth());
         objects.clear();
+        points = 0;
     }
 
     @Override
@@ -128,5 +135,9 @@ public class GameLogic implements ButtonController {
 
     public List<Drawable> getObjects() {
         return objects;
+    }
+
+    public void addScore() {
+        this.points++;
     }
 }
