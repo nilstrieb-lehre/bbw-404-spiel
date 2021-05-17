@@ -20,7 +20,8 @@ public class GameLogic implements ButtonController {
 
     private final StarfieldExample starfield;
 
-    private volatile boolean isRunning = true;
+    private boolean isRunning;
+
     private boolean init = false;
 
     private final Drawable splashScreen;
@@ -46,6 +47,7 @@ public class GameLogic implements ButtonController {
         enemySprites.add(new Sprite("sprites\\Endboss.png", graphic));
 
         score = new Score(graphic);
+        isRunning = true;
 
         splashScreen = new SplashScreen(new Sprite("sprites\\logo.png", graphic), 5, 5);
     }
@@ -62,10 +64,8 @@ public class GameLogic implements ButtonController {
     public void tick() {
 
         if (!isRunning) {
-            System.out.println("not running");
             return;
         }
-        System.out.println("running");
 
         graphic.clear();
         if (!init) {

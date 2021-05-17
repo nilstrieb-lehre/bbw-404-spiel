@@ -3,6 +3,7 @@ package ch.bbw.gameboy;
 import ch.bbw.gameboy.impl.GameBbwoy;
 
 import javax.swing.*;
+import java.util.concurrent.CompletableFuture;
 
 public class Enemy implements Drawable {
 
@@ -24,12 +25,12 @@ public class Enemy implements Drawable {
         sprite.draw(x, y);
 
         if (y + sprite.getHeight() > GameBbwoy.DISPLAY_HEIGHT) {
-            //game over, Count at null
             logic.reset();
             logic.setRunning(false);
-            JOptionPane.showMessageDialog(null, "Game over! Better Luck next Time");
-            System.out.println("test");
-            logic.setRunning(true);
+            CompletableFuture.runAsync(() -> {
+                JOptionPane.showMessageDialog(null, "Game over! Better Luck next Time");
+                logic.setRunning(true);
+            });
         }
 
         for (Drawable d : logic.getObjects()) {
