@@ -12,6 +12,9 @@ public class Player implements Drawable {
     private int velocity = 0;
     private double graphicX;
 
+    private boolean leftPressed;
+    private boolean rightPressed;
+
     public Player(Sprite sprite, double graphicX) {
         this.sprite = sprite;
         this.graphicX = graphicX;
@@ -54,8 +57,10 @@ public class Player implements Drawable {
 
         if (button == ButtonController.GameButton.LEFT) {
             velocity = -speed;
+            leftPressed = true;
         } else if (button == ButtonController.GameButton.RIGHT) {
             velocity = speed;
+            rightPressed = true;
         }
 
         sprite.draw(posX, posY);
@@ -63,9 +68,19 @@ public class Player implements Drawable {
 
     public void stopMoving(ButtonController.GameButton button, int pixelWidth) {
         if (button == ButtonController.GameButton.LEFT) {
-            velocity = 0;
+            leftPressed = false;
+            if (rightPressed) {
+                velocity = speed;
+            } else {
+                velocity = 0;
+            }
         } else if (button == ButtonController.GameButton.RIGHT) {
-            velocity = 0;
+            rightPressed = false;
+            if (leftPressed) {
+                velocity = -speed;
+            } else {
+                velocity = 0;
+            }
         }
 
         sprite.draw(posX, posY);
