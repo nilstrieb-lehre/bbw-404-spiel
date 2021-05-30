@@ -13,7 +13,6 @@ import java.util.Random;
  * Anchor point for the graphic {@link #tick()} and the user-interaction {@link #onButtonPress(GameButton)}.
  */
 public class GameLogic implements ButtonController {
-
     private static Random random = new Random();
 
     private final PixelGraphic graphic;
